@@ -40,31 +40,31 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-            """ removes certain rows from the dataset """
-            idx_dataset = self.indexed_dataset()
-            assert isinstance(index, int) and index < (len(idx_dataset) - 1)
+        """ removes certain rows from the dataset """
+        idx_dataset = self.indexed_dataset()
+        assert isinstance(index, int) and index < (len(idx_dataset) - 1)
 
-            i, mv, data = 0, index, []
-            while (i < page_size and index < len(idx_dataset)):
-                value = idx_dataset.get(mv, None)
-                if value:
-                    data.append(value)
-                    i += 1
-                mv += 1
+        i, mv, data = 0, index, []
+        while (i < page_size and index < len(idx_dataset)):
+            value = idx_dataset.get(mv, None)
+            if value:
+                data.append(value)
+                i += 1
+            mv += 1
 
-            next_index = None
+        next_index = None
 
-            while (mv < len(idx_dataset)):
-                value = idx_dataset.get(mv, None)
-                if value:
-                    next_index = mv
-                    break
-                mv += 1
+        while (mv < len(idx_dataset)):
+            value = idx_dataset.get(mv, None)
+            if value:
+                next_index = mv
+                break
+            mv += 1
 
-            hyper = {
-                    'index': index,
-                    'next_index': next_index,
-                    'page_size': page_size,
-                    'data': data
-                    }
-            return hyper
+        hyper = {
+                'index': index,
+                'next_index': next_index,
+                'page_size': page_size,
+                'data': data
+                }
+        return hyper

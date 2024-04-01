@@ -1,4 +1,4 @@
-#!/usr/bin/env/ python3
+#!/usr/bin/env python3
 """
 returns a tuple containing start and end index
 """
@@ -47,6 +47,7 @@ class Server:
                 'prev_page': page - 1 if (page - 1) > 0 else None,
                 'total_pages': page_dict
         }
+
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """ function that return start and end index """
