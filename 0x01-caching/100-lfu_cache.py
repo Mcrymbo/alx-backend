@@ -25,7 +25,8 @@ class LFUCache(BaseCaching):
             else:
                 if len(self.cache_data) >= self.MAX_ITEMS:
                     min_freq = min(self.frequency.values())
-                    min_freq_used = [k for k, v in self.frequency.items() if v == min_freq]
+                    min_freq_used = [k for k, v in
+                                     self.frequency.items() if v == min_freq]
 
                     for k in min_freq_used:
                         del self.cache_data[k]
@@ -35,7 +36,7 @@ class LFUCache(BaseCaching):
 
                 self.cache_data[key] = item
                 self.frequency[key] = 1
-    
+
     def get(self, key):
         """ get a cached data based on a key """
         if key in self.cache_data:
