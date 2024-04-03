@@ -19,7 +19,7 @@ class FIFOCache(BaseCaching):
             self.cache_data[key] = item
             if len(self.cache_data) > self.MAX_ITEMS:
                 discarded = self.cache_data.popitem(last=False)
-                print('Discard:', discarded[0])
+                print('DISCARD:', discarded[0])
 
     def get(self, key):
         """ return the value linked with the key """
