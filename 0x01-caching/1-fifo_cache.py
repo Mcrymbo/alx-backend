@@ -2,6 +2,7 @@
 """
 FIFO caching
 """
+from collections import OrderedDict
 
 BaseCaching = __import__('base_caching').BaseCaching
 
@@ -10,19 +11,15 @@ class FIFOCache(BaseCaching):
     """ class for FIFO caching """
     def __init__(self):
         super().__init__()
-        self.queue = []
+        self.cache_data = OrderedDict()
 
     def put(self, key, item):
         """ adds item to the cache """
         if key and item:
-            if len(self.cache_data) >= self.MAX_ITEMS:
-                if self.queue:
-                    discarded = self.queue.pop(0)
-                    del self.cache_data[discarded]
-                    print('Discard:', discarded)
-
-        self.cache_data[key] = item
-        self.queue.append(key)
+            self.cache_data[key] = item
+            if len(self.cache_data) > self.MAX_ITEMS:
+                discarded = self.cache_data.popitem(last=False)
+                print('Discard:', discarded[0])
 
     def get(self, key):
         """ return the value linked with the key """
