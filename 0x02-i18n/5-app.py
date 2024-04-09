@@ -14,14 +14,14 @@ class Config(object):
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-app.config.from_object('4-app.Config')
+app.config.from_object(Config)
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
 def index() -> str:
     """ default route
     """
-    return render_template('4-index.html')
+    return render_template('5-index.html')
 
 
 @babel.localeselector
