@@ -7,6 +7,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
     """ the default route for the application """

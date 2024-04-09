@@ -60,19 +60,23 @@ def get_user() -> Union[dict, None]:
 
 def get_timezone() -> Optional[str]:
     """ Determines best match for supported timezones """
-    if request.args.get('timezone'):
-        timezone = request.args.get('timezone')
-        try:
-            return timezone(timezone).zone
-        except pytz.exceptions.UnknownTimeZoneError:
-            return None
-    elif g.user and g.user.get('timezone'):
-        try:
-            return timezone(g.user.get('timezone')).zone
-        except pytz.exceptions.UnknownTimeZoneError:
-            return None
-    else:
-        return request.accept_languages.best_match(app.config['LANGUAGES'])
+    try:
+        if request.args.get("timezone"):
+            timezone = request.args.get("timezone")
+            tz = pytz.timezone(timezone)
+
+        elif g.user and g.user.get("timezone"):
+            timezone = g.user.get("timezone")
+            tz = pytz.timezone(timezone)
+        else:
+            timezone = app.config["BABEL_DEFAULT_TIMEZONE"]
+            tz = pytz.timezone(timezone)
+
+    except pytz.exceptions.UnknownTimeZoneError:
+        timezone = "UTC"
+
+    return timezone
+
 
 babel = Babel(app, locale_selector=get_locale, timezone_selector=get_timezone)
 
