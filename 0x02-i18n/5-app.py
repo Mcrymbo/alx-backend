@@ -27,7 +27,7 @@ app.config.from_object(Config)
 
 @app.route('/', methods=['GET'], strict_slashes=False)
 def index() -> str:
-    """ Default route   
+    """ Default route
     """
     return render_template('5-index.html')
 
