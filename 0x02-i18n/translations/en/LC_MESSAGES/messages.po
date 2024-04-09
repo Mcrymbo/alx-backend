@@ -3,11 +3,8 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
-msgid "home_title"
-msgstr "Welcome to Holberton"
-
-msgid "home_header"
-msgstr "Hello world!"
+msgid ""
+msgstr ""
 
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
@@ -22,3 +19,20 @@ msgstr "Hello world!"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
+#: templates/6-index.html:8 templates/7-index.html:8 templates/index.html:8
+msgid "home_title"
+msgstr ""Welcome to Holberton""
+
+#: templates/3-index.html:13 templates/4-index.html:13
+#: templates/5-index.html:6 templates/6-index.html:13
+#: templates/7-index.html:13 templates/index.html:13
+msgid "home_header"
+msgstr "Hello world!"
+
+#: templates/5-index.html
+msgid "logged_in_as"
+msgstr "You are logged in as %(username)s."
+
+#: template/5-index.html
+msgid "not_logged_in"
+msgstr "You are not logged in."
